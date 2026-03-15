@@ -1,0 +1,48 @@
+.signup-profile-form {
+  padding: 110px 16px 16px;
+  margin: auto;
+  width: 350px;
+}
+
+.top-introduction {
+  height: 120px;
+  text-align: center;
+}
+
+.top-description {
+  color: rgb(80, 80, 80);
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.top-title {
+  text-align: center;
+  font-size: 28px;
+}
+
+.text-box {
+  margin: auto;
+  width: 320px;
+  height: 40px;
+  background-color: white;
+  box-shadow: gray 0px 1px 5px;
+  border-radius: 10px;
+}
+
+.navigation-login {
+  margin-top: 20px;
+  text-align: right;
+  color: #41469b;
+  text-decoration: none;
+}
+
+.submit-button {
+  margin: auto;
+  text-align: center;
+  height: 50px;
+  width: 300px;
+  color: white;
+  background-color: #41469b;
+  border-radius: 15px;
+}
+

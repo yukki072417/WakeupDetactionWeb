@@ -1,17 +1,36 @@
-import { useAndroidBridge } from "../../hooks/useAndroidBridge";
+import { useAuth0 } from "@auth0/auth0-react";
+import { FcGoogle } from "react-icons/fc";
+import "./AuthenticateButtons.css";
 
 const GoogleLogin = () => {
-  const bridge = useAndroidBridge();
-  const test = () => {
-    bridge.vibrate();
+  const { loginWithRedirect, isLoading } = useAuth0();
+
+  const handleLogin = () => {
+    loginWithRedirect({
+      authorizationParams: {
+        screen_hint: "login",
+        connection: "google-oauth2",
+      },
+      appState: {
+        postAuthAction: "login",
+        returnTo: "/",
+      },
+    });
   };
 
   return (
-    <>
-      <button onClick={test} title="未実装です">
-        Googleでログイン(準備中)
-      </button>
-    </>
+    <button
+      className="google-auth-button"
+      type="button"
+      onClick={handleLogin}
+      disabled={isLoading}
+      aria-label="Googleでログイン"
+    >
+      <span className="google-auth-icon" aria-hidden="true">
+        <FcGoogle />
+      </span>
+      Googleでログイン
+    </button>
   );
 };
 

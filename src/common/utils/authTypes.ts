@@ -3,11 +3,13 @@ export type AuthSession = {
   accessToken: string;
   tokenType: string;
   expiresAtMs: number;
+  provider?: "universal" | "auth0";
 };
 
 export type AuthErrorCode =
   | "INVALID_INPUT"
   | "UNAUTHORIZED"
+  | "CONFLICT"
   | "NETWORK"
   | "UNKNOWN";
 
@@ -20,4 +22,3 @@ export class AuthError extends Error {
     this.code = code;
   }
 }
-

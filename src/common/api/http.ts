@@ -38,7 +38,8 @@ export class ApiRequestError extends Error {
   }
 }
 
-export const postJson = async <TResponse>(
+const requestJson = async <TResponse>(
+  method: "POST" | "PATCH",
   path: string,
   body: unknown,
   init?: RequestInit
@@ -53,9 +54,19 @@ export const postJson = async <TResponse>(
     }
   }
 
-  const res = await fetch(buildUrl(path), {
+  const url = buildUrl(path);
+  const sameOrigin = (() => {
+    try {
+      return new URL(url).origin === window.location.origin;
+    } catch {
+      return true;
+    }
+  })();
+
+  const res = await fetch(url, {
     ...init,
-    method: "POST",
+    method,
+    credentials: init?.credentials ?? (sameOrigin ? "include" : "omit"),
     headers,
     body: JSON.stringify(body),
   });
@@ -74,4 +85,20 @@ export const postJson = async <TResponse>(
   }
 
   return parsed as TResponse;
+};
+
+export const postJson = async <TResponse>(
+  path: string,
+  body: unknown,
+  init?: RequestInit
+): Promise<TResponse> => {
+  return requestJson<TResponse>("POST", path, body, init);
+};
+
+export const patchJson = async <TResponse>(
+  path: string,
+  body: unknown,
+  init?: RequestInit
+): Promise<TResponse> => {
+  return requestJson<TResponse>("PATCH", path, body, init);
 };

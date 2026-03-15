@@ -1,0 +1,25 @@
+.google-auth-button {
+  margin: auto;
+  width: 300px;
+  height: 50px;
+  border-radius: 15px;
+  background-color: white;
+  box-shadow: gray 0px 1px 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: rgb(80, 80, 80);
+}
+
+.google-auth-button:disabled {
+  opacity: 0.6;
+}
+
+.google-auth-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+

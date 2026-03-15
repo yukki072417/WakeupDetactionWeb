@@ -7,12 +7,26 @@ import { GoogleLogin } from "../../common/components/AuthenticateButtons";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { isAuthenticated, login } = useAuth();
+  const { isAuthenticated, isVerifying, login } = useAuth();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+
+  if (isVerifying) {
+    return (
+      <>
+        <Header />
+        <main className="login-form">
+          <div className="top-introduction">
+            <h1 className="top-title">認証中...</h1>
+            <p className="top-description">しばらくお待ちください</p>
+          </div>
+        </main>
+      </>
+    );
+  }
 
   if (isAuthenticated) return <Navigate to="/" replace />;
 

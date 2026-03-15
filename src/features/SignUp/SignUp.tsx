@@ -7,15 +7,12 @@ import { GoogleSignup } from "../../common/components/AuthenticateButtons";
 
 const SignUp = () => {
   const navigate = useNavigate();
-  const { isAuthenticated, signup } = useAuth();
+  const { isAuthenticated } = useAuth();
 
   const [email, setEmail] = useState<string>("");
-  const [userId, setUserId] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [passwordConfirm, setPasswordConfirm] = useState<string>("");
-  const [username, setUsername] = useState("");
   const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
 
   if (isAuthenticated) return <Navigate to="/" replace />;
 
@@ -28,32 +25,9 @@ const SignUp = () => {
       return;
     }
 
-    if (!userId.trim()) {
-      setError("ユーザーIDを入力してください");
-      return;
-    }
-
-    if (!username.trim()) {
-      setError("ユーザー名を入力してください");
-      return;
-    }
-
-    setLoading(true);
-    try {
-      await signup({
-        email,
-        password,
-        username: username.trim(),
-        userId: userId.trim(),
-      });
-      navigate("/", { replace: true });
-    } catch (err) {
-      setError(
-        err instanceof Error ? err.message : "サインアップに失敗しました"
-      );
-    } finally {
-      setLoading(false);
-    }
+    navigate("/signup/profile", {
+      state: { email: email.trim(), password },
+    });
   };
 
   return (
@@ -65,24 +39,6 @@ const SignUp = () => {
           <p className="top-description">睡眠と起床を友達と共有しよう</p>
         </div>
         <form onSubmit={onSubmit} style={{ display: "grid", gap: 12 }}>
-          <label style={{ display: "grid", gap: 4 }}>
-            <span>ユーザーID</span>
-            <input
-              value={userId}
-              className="text-box"
-              onChange={(e) => setUserId(e.target.value)}
-              autoComplete="off"
-            />
-          </label>
-          <label style={{ display: "grid", gap: 4 }}>
-            <span>ユーザー名</span>
-            <input
-              value={username}
-              className="text-box"
-              onChange={(e) => setUsername(e.target.value)}
-              autoComplete="username"
-            />
-          </label>
           <label style={{ display: "grid", gap: 4 }}>
             <span>メールアドレス</span>
             <input
@@ -113,8 +69,8 @@ const SignUp = () => {
             />
           </label>
           {error ? <p style={{ color: "crimson" }}>{error}</p> : null}
-          <button type="submit" className="submit-button" disabled={loading}>
-            {loading ? "作成中..." : "アカウント作成"}
+          <button type="submit" className="submit-button">
+            次へ
           </button>
           <div className="line">または</div>
           <GoogleSignup />

@@ -4,6 +4,7 @@ import type { AuthSession } from "../utils/authTypes";
 export type AuthContextValue = {
   session: AuthSession | null;
   isAuthenticated: boolean;
+  isVerifying: boolean;
   login: (params: { email: string; password: string }) => Promise<void>;
   signup: (params: {
     email: string;
@@ -11,6 +12,7 @@ export type AuthContextValue = {
     username: string;
     userId: string;
   }) => Promise<void>;
+  completeSocialSignup: (params: { username: string; userId: string }) => Promise<void>;
   logout: () => Promise<void>;
 };
 
