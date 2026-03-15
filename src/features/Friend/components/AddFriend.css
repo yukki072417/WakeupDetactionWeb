@@ -4,6 +4,7 @@
   flex-direction: column;
   h2 {
     font-size: 30px;
+    margin: 0;
   }
   p {
     font-size: 16px;
@@ -12,10 +13,14 @@
 }
 
 .search_box {
+  display: flex;
+  align-items: center;
+  margin: 0 20px 12px;
+  gap: 12px;
   label {
-    margin: 0 20px 12px;
     display: flex;
     align-items: center;
+    width: 100%;
     gap: 12px;
     padding: 16px;
     background-color: #f3f4f6;
@@ -26,21 +31,33 @@
       font-size: 16px;
     }
   }
+  .search_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--nightColor);
+    border-radius: 16px;
+    padding: 15px 25px;
+    min-width: 90px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    p {
+      font-size: 16px;
+      color: #fff;
+    }
+  }
 }
 
 .user_copy {
   margin: 0 20px;
-  background-color: var(--nightColor);
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 4px;
-  padding: 18px 0;
+  padding: 14px 0;
   border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
 
   h3 {
-    color: #fff;
+    color: #5e5e5e;
     font-size: 16px;
   }
 }

@@ -20,7 +20,6 @@ const PickupFriend = () => {
       )
     );
   };
-
   return (
     <>
       <h2>おすすめの友達</h2>
