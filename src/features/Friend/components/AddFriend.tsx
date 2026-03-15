@@ -5,6 +5,7 @@ import CopyIcon from "../../../assets/icon_copy.png";
 import ProfileIcon from "../../../assets/icon_profile.png";
 import PlusFriend from "../../../assets/icon_plusFriend.png";
 import AfterApplication from "../../../assets/AfterApplication.png";
+import CloseBtnImg from "../../../assets/icon_close.png";
 
 const AddFriend = () => {
   const [showModal, setShowModal] = useState(false);
@@ -64,7 +65,9 @@ const AddFriend = () => {
               <p>{added ? "追加済み" : "追加"}</p>{" "}
             </div>
           </div>
-          <div onClick={() => setShowModal(false)}></div>
+          <div className="close_btn" onClick={() => setShowModal(false)}>
+            <img src={CloseBtnImg} alt="" />
+          </div>
         </div>
       )}
     </>
