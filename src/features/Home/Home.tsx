@@ -7,7 +7,7 @@ const Home = () => {
     <>
       <Header />
       <main>
-        <HomeProfile />
+        <HomeProfile name="あまれってぃー" status="sleepy" profileImage="" />
       </main>
       <Footer active="home" />
     </>
