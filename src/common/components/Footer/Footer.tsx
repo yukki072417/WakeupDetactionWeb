@@ -41,7 +41,7 @@ const Footer = ({ active }: FooterProps) => {
     <footer>
       {navItems.map((item) => {
         const isActive = active === item.key;
-
+        
         return (
           <div key={item.key} onClick={() => navigate(item.path)}>
             <img

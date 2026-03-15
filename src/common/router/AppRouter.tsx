@@ -5,6 +5,7 @@ import Friend from "../../features/Friend/Friend";
 import Setting from "../../features/Setting/Setting";
 import SignUp from "../../features/SignUp/SignUp";
 import Login from "../../features/Login/Login";
+import Bell from "../../features/Bell/Bell";
 
 export const AppRouter = () => {
   return (
@@ -14,6 +15,7 @@ export const AppRouter = () => {
       <Route path="/setting" element={<Setting />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/bell" element={<Bell />} />
     </Routes>
   );
 };
