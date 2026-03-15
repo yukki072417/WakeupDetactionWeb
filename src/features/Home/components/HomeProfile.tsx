@@ -1,7 +1,6 @@
 import "./HomeProfile.css";
 import IconProfile from "../../../assets/icon_profile.png";
 import IconSleepy from "../../../assets/icon_sleepy.png";
-import IconWakeup from "../../../assets/icon_wakeup.png";
 
 const HomeProfile = () => {
   return (
