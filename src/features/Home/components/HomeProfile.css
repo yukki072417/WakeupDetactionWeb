@@ -12,8 +12,12 @@
     background-color: var(--grayColor);
   }
   section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     h2 {
       font-size: 16px;
+      margin: 0;
     }
     div {
       display: flex;
