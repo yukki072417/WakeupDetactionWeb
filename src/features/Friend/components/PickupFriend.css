@@ -1,0 +1,36 @@
+h2 {
+  margin: 28px 20px 24px;
+}
+
+.friend_card {
+  margin: 0 20px 16px;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  .friend_profile {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+  .add_btn {
+    padding: 8px 12px;
+    background-color: var(--nightColor);
+    display: flex;
+    align-items: center;
+    border-radius: 12px;
+    gap: 8px;
+    min-width: 90px;
+    p {
+      color: #fff;
+      font-size: 11px;
+      font-weight: bold;
+    }
+  }
+  .AfterApplication {
+    background-color: #93949b;
+  }
+}

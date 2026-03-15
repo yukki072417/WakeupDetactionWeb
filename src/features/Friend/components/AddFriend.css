@@ -1,0 +1,46 @@
+.friend_share {
+  margin: 100px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  h2 {
+    font-size: 30px;
+  }
+  p {
+    font-size: 16px;
+    color: #5e5e5e;
+  }
+}
+
+.search_box {
+  label {
+    margin: 0 20px 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    background-color: #f3f4f6;
+    border-radius: 16px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    input {
+      width: 100%;
+      font-size: 16px;
+    }
+  }
+}
+
+.user_copy {
+  margin: 0 20px;
+  background-color: var(--nightColor);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 18px 0;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+
+  h3 {
+    color: #fff;
+    font-size: 16px;
+  }
+}

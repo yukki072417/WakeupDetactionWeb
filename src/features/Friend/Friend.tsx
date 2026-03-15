@@ -1,12 +1,17 @@
 import "./Friend.css";
 import Header from "../../common/components/Header/Header";
 import Footer from "../../common/components/Footer/Footer";
+import AddFriend from "./components/AddFriend";
+import PickupFriend from "./components/PickupFriend.tsx";
 
 const Friend = () => {
   return (
     <>
       <Header />
-      <div></div>
+      <main>
+        <AddFriend />
+        <PickupFriend />
+      </main>
       <Footer active="friend" />
     </>
   );
