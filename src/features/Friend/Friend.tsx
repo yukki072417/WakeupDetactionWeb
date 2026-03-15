@@ -7,7 +7,7 @@ const Friend = () => {
     <>
       <Header />
       <div></div>
-      <Footer active="home" />
+      <Footer active="friend" />
     </>
   );
 };

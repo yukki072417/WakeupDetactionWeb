@@ -7,7 +7,7 @@ const Setting = () => {
     <>
       <Header />
       <div></div>
-      <Footer active="home" />
+      <Footer active="setting" />
     </>
   );
 };
