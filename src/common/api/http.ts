@@ -13,7 +13,8 @@ const getApiBaseUrl = () => {
   const envBaseUrl = import.meta.env.VITE_API_BASE_URL as string | undefined;
   const baseUrl = envBaseUrl?.trim();
 
-  if (baseUrl && /^https?:\/\//.test(baseUrl)) return baseUrl.replace(/\/$/, "");
+  if (baseUrl && /^https?:\/\//.test(baseUrl))
+    return baseUrl.replace(/\/$/, "");
   if (baseUrl && baseUrl.startsWith("/")) {
     return `${window.location.origin}${baseUrl}`.replace(/\/$/, "");
   }
@@ -39,14 +40,16 @@ export class ApiRequestError extends Error {
 }
 
 const requestJson = async <TResponse>(
-  method: "POST" | "PATCH",
+  method: "GET" | "POST" | "PATCH",
   path: string,
-  body: unknown,
+  body?: unknown,
   init?: RequestInit
 ): Promise<TResponse> => {
-  const headers: Record<string, string> = {
-    "Content-Type": "application/json",
-  };
+  const headers: Record<string, string> = {};
+
+  if (method !== "GET") {
+    headers["Content-Type"] = "application/json";
+  }
 
   if (init?.headers) {
     for (const [key, value] of new Headers(init.headers).entries()) {
@@ -68,7 +71,7 @@ const requestJson = async <TResponse>(
     method,
     credentials: init?.credentials ?? (sameOrigin ? "include" : "omit"),
     headers,
-    body: JSON.stringify(body),
+    body: method !== "GET" && body ? JSON.stringify(body) : undefined,
   });
 
   const contentType = res.headers.get("content-type") ?? "";
@@ -85,6 +88,13 @@ const requestJson = async <TResponse>(
   }
 
   return parsed as TResponse;
+};
+
+export const getJson = async <TResponse>(
+  path: string,
+  init?: RequestInit
+): Promise<TResponse> => {
+  return requestJson<TResponse>("GET", path, undefined, init);
 };
 
 export const postJson = async <TResponse>(
