@@ -14,7 +14,7 @@ const SignUp = () => {
   const [passwordConfirm, setPasswordConfirm] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
 
-  if (isAuthenticated) return <Navigate to="/" replace />;
+  if (isAuthenticated) return <Navigate to="/home" replace />;
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

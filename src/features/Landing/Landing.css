@@ -1,0 +1,41 @@
+.landing {
+  padding: 110px 16px 16px;
+  margin: auto;
+  width: 350px;
+  display: grid;
+  gap: 16px;
+}
+
+.landing-hero {
+  text-align: center;
+  display: grid;
+  gap: 8px;
+}
+
+.landing-title {
+  font-size: 32px;
+}
+
+.landing-description {
+  color: rgb(80, 80, 80);
+  font-size: 14px;
+}
+
+.landing-button-signup {
+  margin: auto;
+  height: 50px;
+  width: 300px;
+  color: white;
+  background-color: #41469b;
+  border-radius: 15px;
+}
+
+.landing-button-login {
+  margin: auto;
+  height: 50px;
+  width: 300px;
+  color: #41469b;
+  background-color: white;
+  border-radius: 15px;
+  border: 1.5px solid #41469b;
+}

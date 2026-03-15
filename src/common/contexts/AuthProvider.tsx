@@ -17,10 +17,9 @@ import { clearStoredSession } from "../utils/authStorage";
 const AUTH0_POST_ACTION_KEY = "wakeup_detact.auth0.post_action";
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [session, setSession] = useState<AuthSession | null>(() =>
-    loadSession()
-  );
-  const [isVerifying, setIsVerifying] = useState<boolean>(() => !!loadSession());
+  const initialSessionRef = useRef(loadSession());
+  const [session, setSession] = useState<AuthSession | null>(initialSessionRef.current);
+  const [isVerifying, setIsVerifying] = useState<boolean>(!!initialSessionRef.current);
   const syncingAuth0Ref = useRef(false);
   const verifiedOnLoadRef = useRef(false);
   const navigate = useNavigate();
@@ -49,14 +48,15 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         clearStoredSession();
         setSession(null);
         const pathname = location.pathname;
-        if (!pathname.startsWith("/login") && !pathname.startsWith("/signup")) {
+        if (!pathname.startsWith("/login") && !pathname.startsWith("/signup") && pathname !== "/") {
           navigate("/login", { replace: true, state: { from: pathname } });
         }
       } finally {
         setIsVerifying(false);
       }
     })();
-  }, [location.pathname, navigate, session]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     if (isAuth0Loading) return;

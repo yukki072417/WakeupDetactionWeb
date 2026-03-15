@@ -1,12 +1,14 @@
 import "./Login.css";
 import { useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import Header from "../../common/components/Header/Header";
 import { useAuth } from "../../common/contexts/authContext";
 import { GoogleLogin } from "../../common/components/AuthenticateButtons";
 
 const Login = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = (location.state as { from?: string } | null)?.from ?? "/home";
   const { isAuthenticated, isVerifying, login } = useAuth();
 
   const [email, setEmail] = useState("");
@@ -28,7 +30,7 @@ const Login = () => {
     );
   }
 
-  if (isAuthenticated) return <Navigate to="/" replace />;
+  if (isAuthenticated) return <Navigate to="/home" replace />;
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -36,7 +38,7 @@ const Login = () => {
     setLoading(true);
     try {
       await login({ email, password });
-      navigate("/", { replace: true });
+      navigate(from, { replace: true });
     } catch (err) {
       setError(err instanceof Error ? err.message : "ログインに失敗しました");
     } finally {

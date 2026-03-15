@@ -1,6 +1,10 @@
 import "./Home.css";
 import Header from "../../common/components/Header/Header";
 import Footer from "../../common/components/Footer/Footer";
+import Declaration from "./components/Declaration";
+import HomeProfile from "./components/HomeProfile";
+import FriendList from "./components/FriendList";
+
 const Home = () => {
   return (
     <>

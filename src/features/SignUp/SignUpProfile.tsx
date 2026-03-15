@@ -65,7 +65,7 @@ const SignUpProfile = () => {
         });
       }
 
-      navigate("/", { replace: true });
+      navigate("/home", { replace: true });
     } catch (err) {
       setError(err instanceof Error ? err.message : "登録に失敗しました");
     } finally {

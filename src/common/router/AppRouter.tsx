@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 
+import Landing from "../../features/Landing/Landing";
 import Home from "../../features/Home/Home";
 import Friend from "../../features/Friend/Friend";
 import Setting from "../../features/Setting/Setting";
@@ -11,7 +12,8 @@ import { RequireAuth } from "./RequireAuth";
 export const AppRouter = () => {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<Landing />} />
+      <Route path="/home" element={<RequireAuth><Home /></RequireAuth>} />
       <Route
         path="/friend"
         element={
