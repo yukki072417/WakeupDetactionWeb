@@ -1,0 +1,106 @@
+.profile_edit {
+  margin: 0 20px;
+  padding: 18px 0;
+  border-radius: 12px;
+  background-color: var(--nightColor);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  h3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 15px;
+  }
+}
+
+.friend_count {
+  display: flex;
+  justify-content: space-evenly;
+  border-bottom: 1px solid #d9d9d9;
+  padding: 20px 24px;
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h3 {
+      font-size: 30px;
+    }
+    p {
+      font-size: 20px;
+      color: #6a7282;
+    }
+  }
+}
+
+.modal_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fffbee;
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  picture {
+    margin: 20px 0;
+    padding: 0 50% 20px;
+    border-bottom: 1px solid #d9d9d9;
+    position: relative;
+    img {
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+      width: 100px;
+      height: 100px;
+      border-radius: 100%;
+      object-fit: cover;
+    }
+    span {
+      width: 40px;
+      height: 40px;
+      border-radius: 100%;
+      position: absolute;
+      bottom: 20%;
+      right: 40%;
+      background-image: url(../../../assets/icon_photo.png);
+    }
+  }
+  .nameCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 8px;
+    width: 80%;
+    margin: 0 20px 30px;
+    h3 {
+      width: 100%;
+      font-size: 20px;
+    }
+    input {
+      background-color: #fefefe;
+      width: 100%;
+      padding: 15px 20px;
+      border-radius: 16px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+      font-weight: bold;
+    }
+  }
+  .btn {
+    padding: 18px 0;
+    margin: 10px 20px;
+    width: 80%;
+    border-radius: 16px;
+    background-color: var(--nightColor);
+    h3 {
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  .nobtn {
+    background-color: var(--grayColor);
+  }
+}

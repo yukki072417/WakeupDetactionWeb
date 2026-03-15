@@ -1,0 +1,26 @@
+import { useEffect, useState } from "react";
+import { AppRouter } from "../../common/router/AppRouter";
+
+function App() {
+  const [motionCount, setMotionCount] = useState(0);
+
+  useEffect(() => {
+    window.onAndroidMotion = () => {
+      setMotionCount((prev) => prev + 1);
+    };
+
+    return () => {
+      window.onAndroidMotion = undefined;
+    };
+  }, []);
+
+  return (
+    <div style={{ padding: 20 }}>
+      <AppRouter />
+      <h2>スマホの動き検知</h2>
+      <p>動いた回数: {motionCount}</p>
+    </div>
+  );
+}
+
+export default App;
