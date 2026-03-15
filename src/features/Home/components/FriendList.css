@@ -1,0 +1,129 @@
+.title {
+  margin: 30px 30px 15px;
+}
+
+.Friend {
+  margin: 0 30px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 25px;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  padding: 20px;
+  .profileIcon {
+    border: 5px solid var(--nightColor);
+    border-radius: 100%;
+    width: 60px;
+    height: 60px;
+  }
+
+  .flex_friend {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 2px;
+    div {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      p {
+        font-weight: bold;
+      }
+      img {
+        width: 12px;
+        height: 12px;
+      }
+    }
+    p {
+      font-size: 12px;
+    }
+  }
+}
+.nightOver {
+  position: relative;
+  animation: borderWakeup 0.8s infinite linear;
+  &::after {
+    content: "夜更かし中";
+    color: #fff;
+    font-size: 10px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 65px;
+    left: 20px;
+    width: 60px;
+    height: 20px;
+    border-radius: 32px;
+    background-color: var(--nightColor);
+    z-index: 10000;
+  }
+  .profileIcon {
+    border: 5px solid var(--morning);
+  }
+}
+
+.sleepOver {
+  position: relative;
+  animation: borderSleep 0.8s infinite linear;
+  &::after {
+    content: "寝坊中";
+    color: #fff;
+    font-size: 10px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 65px;
+    left: 20px;
+    width: 60px;
+    height: 20px;
+    border-radius: 32px;
+    background-color: var(--morning);
+    z-index: 10000;
+  }
+  .profileIcon {
+    border: 5px solid var(--nightColor);
+  }
+}
+
+.sleepy {
+  .profileIcon {
+    border: 5px solid var(--nightColor);
+  }
+}
+
+.wakeup {
+  .profileIcon {
+    border: 5px solid var(--morning);
+  }
+}
+
+@keyframes borderSleep {
+  0% {
+    border: #fff 3px solid;
+  }
+  50% {
+    border: var(--nightColor) 3px solid;
+  }
+  100% {
+    border: #fff 3px solid;
+  }
+}
+
+@keyframes borderWakeup {
+  0% {
+    border: #fff 3px solid;
+  }
+  50% {
+    border: var(--morning) 3px solid;
+  }
+  100% {
+    border: #fff 3px solid;
+  }
+}

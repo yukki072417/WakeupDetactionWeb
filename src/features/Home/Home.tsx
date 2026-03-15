@@ -2,12 +2,16 @@ import "./Home.css";
 import Header from "../../common/components/Header/Header";
 import Footer from "../../common/components/Footer/Footer";
 import HomeProfile from "./components/HomeProfile";
+import Declaration from "./components/Declaration";
+import FriendList from "./components/FriendList";
 const Home = () => {
   return (
     <>
       <Header />
       <main>
-        <HomeProfile />
+        <HomeProfile name="あまれってぃー" status="sleepy" profileImage="aaa" />
+        <Declaration />
+        <FriendList />
       </main>
       <Footer active="home" />
     </>
