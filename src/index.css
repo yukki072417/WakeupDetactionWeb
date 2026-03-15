@@ -4,6 +4,12 @@
    # Global selectors
    # ================================================================= */
 
+:root {
+  --morning: #ff7b1e;
+  --nightColor: #41469b;
+  --grayColor: #99a1af;
+}
+
 html {
   box-sizing: border-box;
   -webkit-text-size-adjust: 100%; /* Prevent adjustments of font size after orientation changes in iOS */
