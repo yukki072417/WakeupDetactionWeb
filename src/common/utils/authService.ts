@@ -70,18 +70,21 @@ export const loginWithUniversal = async (params: {
 export const signupWithUniversal = async (params: {
   email: string;
   password: string;
-  nickname: string;
+  username: string;
+  userId: string;
 }): Promise<AuthSession> => {
   const email = params.email.trim();
   const password = params.password;
-  const nickname = params.nickname.trim();
+  const username = params.username.trim();
+  const userId = params.userId.trim();
 
-  if (!email || !password || !nickname || !isValidEmail(email)) {
+  if (!email || !password || !username || !userId || !isValidEmail(email)) {
     throw new AuthError("INVALID_INPUT", "入力内容を確認してください");
   }
 
   try {
-    const res = await universalSignup({ email, password, nickname });
+    const req = { user_id: userId, email, password, username };
+    const res = await universalSignup(req);
     if (!res.success) {
       throw new AuthError("UNAUTHORIZED", res.message ?? "サインアップに失敗しました");
     }
@@ -114,4 +117,3 @@ export const logout = async (session: AuthSession | null) => {
     // ignore
   }
 };
-

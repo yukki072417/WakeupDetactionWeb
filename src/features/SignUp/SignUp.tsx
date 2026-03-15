@@ -9,10 +9,11 @@ const SignUp = () => {
   const navigate = useNavigate();
   const { isAuthenticated, signup } = useAuth();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordConfirm, setPasswordConfirm] = useState("");
-  const [nickname, setNickname] = useState("");
+  const [email, setEmail] = useState<string>("");
+  const [userId, setUserId] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [passwordConfirm, setPasswordConfirm] = useState<string>("");
+  const [username, setUsername] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -27,9 +28,24 @@ const SignUp = () => {
       return;
     }
 
+    if (!userId.trim()) {
+      setError("ユーザーIDを入力してください");
+      return;
+    }
+
+    if (!username.trim()) {
+      setError("ユーザー名を入力してください");
+      return;
+    }
+
     setLoading(true);
     try {
-      await signup({ email, password, nickname });
+      await signup({
+        email,
+        password,
+        username: username.trim(),
+        userId: userId.trim(),
+      });
       navigate("/", { replace: true });
     } catch (err) {
       setError(
@@ -50,12 +66,21 @@ const SignUp = () => {
         </div>
         <form onSubmit={onSubmit} style={{ display: "grid", gap: 12 }}>
           <label style={{ display: "grid", gap: 4 }}>
-            <span>名前</span>
+            <span>ユーザーID</span>
             <input
-              value={nickname}
+              value={userId}
               className="text-box"
-              onChange={(e) => setNickname(e.target.value)}
-              autoComplete="nickname"
+              onChange={(e) => setUserId(e.target.value)}
+              autoComplete="off"
+            />
+          </label>
+          <label style={{ display: "grid", gap: 4 }}>
+            <span>ユーザー名</span>
+            <input
+              value={username}
+              className="text-box"
+              onChange={(e) => setUsername(e.target.value)}
+              autoComplete="username"
             />
           </label>
           <label style={{ display: "grid", gap: 4 }}>

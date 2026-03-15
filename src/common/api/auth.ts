@@ -6,9 +6,10 @@ export type UniversalLoginRequest = {
 };
 
 export type UniversalSignupRequest = {
+  user_id: string;
   email: string;
   password: string;
-  nickname: string;
+  username: string;
 };
 
 export type UniversalAuthResponse = ApiResult<{
@@ -37,4 +38,3 @@ export const universalLogout = async (accessToken: string) => {
     }
   );
 };
-

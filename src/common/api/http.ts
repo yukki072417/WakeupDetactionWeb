@@ -14,6 +14,9 @@ const getApiBaseUrl = () => {
   const baseUrl = envBaseUrl?.trim();
 
   if (baseUrl && /^https?:\/\//.test(baseUrl)) return baseUrl.replace(/\/$/, "");
+  if (baseUrl && baseUrl.startsWith("/")) {
+    return `${window.location.origin}${baseUrl}`.replace(/\/$/, "");
+  }
 
   return `${window.location.origin}/api`;
 };

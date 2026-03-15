@@ -8,7 +8,8 @@ export type AuthContextValue = {
   signup: (params: {
     email: string;
     password: string;
-    nickname: string;
+    username: string;
+    userId: string;
   }) => Promise<void>;
   logout: () => Promise<void>;
 };
@@ -20,4 +21,3 @@ export const useAuth = () => {
   if (!ctx) throw new Error("useAuth must be used within AuthProvider");
   return ctx;
 };
-

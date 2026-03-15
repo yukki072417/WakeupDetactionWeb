@@ -2,3 +2,65 @@ body {
   background-color: #fffaee;
   width: 100vw;
 }
+
+.home-auth {
+  margin: 110px auto 0;
+  width: 350px;
+  padding: 0 16px;
+  text-align: center;
+}
+
+.home-auth-title {
+  font-size: 24px;
+}
+
+.home-auth-description {
+  color: rgb(80, 80, 80);
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.home-auth-actions {
+  margin-top: 24px;
+  display: grid;
+  gap: 12px;
+}
+
+.home-auth-primary,
+.home-auth-secondary {
+  display: block;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 15px;
+  text-decoration: none;
+  text-align: center;
+  width: 300px;
+  margin: auto;
+}
+
+.home-auth-primary {
+  color: white;
+  background-color: #41469b;
+}
+
+.home-auth-secondary {
+  color: #41469b;
+  background-color: white;
+  box-shadow: gray 0px 1px 5px;
+}
+
+.home-authenticated {
+  padding: 16px 30px;
+}
+
+.home-userid {
+  margin-bottom: 8px;
+}
+
+.home-logout {
+  height: 44px;
+  padding: 0 16px;
+  border-radius: 12px;
+  background-color: white;
+  box-shadow: gray 0px 1px 5px;
+}

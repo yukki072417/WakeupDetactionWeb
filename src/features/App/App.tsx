@@ -1,7 +1,11 @@
 import { AppRouter } from "../../common/router/AppRouter";
 
 function App() {
-  return <AppRouter />;
+  return (
+    <div style={{ padding: 20 }}>
+      <AppRouter />
+    </div>
+  );
 }
 
 export default App;

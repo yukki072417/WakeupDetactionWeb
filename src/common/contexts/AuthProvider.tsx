@@ -19,8 +19,13 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         const next = await loginWithUniversal({ email, password });
         setSession(next);
       },
-      signup: async ({ email, password, nickname }) => {
-        const next = await signupWithUniversal({ email, password, nickname });
+      signup: async ({ email, password, username, userId }) => {
+        const next = await signupWithUniversal({
+          email,
+          password,
+          username,
+          userId,
+        });
         setSession(next);
       },
       logout: async () => {
