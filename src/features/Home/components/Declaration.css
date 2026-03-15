@@ -1,0 +1,33 @@
+.Declaration {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  padding: 10px 20px;
+  margin: 0 30px;
+  border-radius: 16px;
+  margin-top: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  input {
+    color: #fff;
+    accent-color: #fff;
+    font-weight: bold;
+  }
+  input[type="time"] {
+    position: relative;
+  }
+  input[type="time"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    opacity: 0;
+  }
+  p {
+    color: #fff;
+    font-weight: bold;
+  }
+}
+.wakeup {
+  background-color: var(--morning);
+}
+.sleepy {
+  background-color: var(--nightColor);
+}
