@@ -40,7 +40,7 @@ export class ApiRequestError extends Error {
 }
 
 const requestJson = async <TResponse>(
-  method: "GET" | "POST" | "PATCH",
+  method: "GET" | "POST" | "PATCH" | "PUT",
   path: string,
   body?: unknown,
   init?: RequestInit
@@ -111,4 +111,12 @@ export const patchJson = async <TResponse>(
   init?: RequestInit
 ): Promise<TResponse> => {
   return requestJson<TResponse>("PATCH", path, body, init);
+};
+
+export const putJson = async <TResponse>(
+  path: string,
+  body: unknown,
+  init?: RequestInit
+): Promise<TResponse> => {
+  return requestJson<TResponse>("PUT", path, body, init);
 };

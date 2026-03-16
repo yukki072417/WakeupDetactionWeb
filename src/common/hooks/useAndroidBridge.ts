@@ -1,25 +1,36 @@
+import {
+  isAndroidWebView,
+  sendToAndroid,
+  vibrateDevice,
+  registerMotionCallback,
+} from "../utils/androidBridge";
+
 declare global {
   interface AndroidBridge {
     postMessage(msg: string): void;
-    vibrate(): void; // ← すでに追加済みならそのまま
+    vibrate(): void;
   }
 
   interface Window {
     Android?: AndroidBridge;
-
-    // ← これを追加
     onAndroidMotion?: () => void;
   }
 }
 
 export const useAndroidBridge = () => {
+  const isAvailable = isAndroidWebView();
+
   const send = (msg: string) => {
-    window.Android?.postMessage(msg);
+    sendToAndroid({ type: "message", payload: msg });
   };
 
   const vibrate = () => {
-    window.Android?.vibrate?.();
+    vibrateDevice();
   };
 
-  return { send, vibrate };
+  const onMotion = (callback: () => void) => {
+    return registerMotionCallback(callback);
+  };
+
+  return { isAvailable, send, vibrate, onMotion };
 };

@@ -23,12 +23,6 @@ const friends: FriendType[] = [
     sleepTime: "1:30",
     wakeTime: "8:00",
   },
-  {
-    name: "ゆっきー",
-    status: "sleepOver",
-    sleepTime: "23:00",
-    wakeTime: "7:00",
-  },
 ];
 const FriendList = () => {
   return (

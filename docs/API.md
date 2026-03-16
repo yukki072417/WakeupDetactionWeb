@@ -73,16 +73,24 @@
       - [パスパラメータ](#パスパラメータ-6)
       - [リクエストボディ](#リクエストボディ-7)
       - [レスポンスボディ](#レスポンスボディ-16)
+  - [就寝宣言関連処理](#就寝宣言関連処理)
+    - [就寝宣言時刻取得 `GET /sleep-time/{user_id}`](#就寝宣言時刻取得-get-sleep-timeuser_id)
+      - [パスパラメータ](#パスパラメータ-7)
+      - [レスポンスボディ](#レスポンスボディ-17)
+    - [就寝宣言時刻登録/更新 `PUT /sleep-time/{user_id}`](#就寝宣言時刻登録更新-put-sleep-timeuser_id)
+      - [パスパラメータ](#パスパラメータ-8)
+      - [リクエストボディ](#リクエストボディ-8)
+      - [レスポンスボディ](#レスポンスボディ-18)
   - [通知関連処理](#通知関連処理)
     - [通知一覧取得 `GET /notifications`](#通知一覧取得-get-notifications)
       - [クエリパラメータ](#クエリパラメータ-2)
-      - [レスポンスボディ](#レスポンスボディ-17)
-    - [通知を既読にする `PATCH /notifications/{id}/read`](#通知を既読にする-patch-notificationsidread)
-      - [パスパラメータ](#パスパラメータ-7)
-      - [レスポンスボディ](#レスポンスボディ-18)
-    - [通知を全件既読にする `PATCH /notifications/read-all`](#通知を全件既読にする-patch-notificationsread-all)
-      - [リクエストボディ](#リクエストボディ-8)
       - [レスポンスボディ](#レスポンスボディ-19)
+    - [通知を既読にする `PATCH /notifications/{id}/read`](#通知を既読にする-patch-notificationsidread)
+      - [パスパラメータ](#パスパラメータ-9)
+      - [レスポンスボディ](#レスポンスボディ-20)
+    - [通知を全件既読にする `PATCH /notifications/read-all`](#通知を全件既読にする-patch-notificationsread-all)
+      - [リクエストボディ](#リクエストボディ-9)
+      - [レスポンスボディ](#レスポンスボディ-21)
 
 # APIエンドポイント
 
@@ -126,6 +134,8 @@ JWTの発行元は **Auth0** です。
 - `PUT /user-status/{user_id}`
 - `GET /wakeup-time/{user_id}`
 - `PUT /wakeup-time/{user_id}`
+- `GET /sleep-time/{user_id}`
+- `PUT /sleep-time/{user_id}`
 - `GET /notifications`
 - `PATCH /notifications/{id}/read`
 - `PATCH /notifications/read-all`
@@ -537,6 +547,53 @@ Authorization: Bearer <Auth0のJWT>
 ```json
 {
   "time": "07:30:00"
+}
+```
+
+#### レスポンスボディ
+
+[共通レスポンスボディ](#共通レスポンスボディ)に準じる
+
+## 就寝宣言関連処理
+
+| エンドポイント名                                                     | 説明                        | メソッド | エンドポイント        |
+| -------------------------------------------------------------------- | --------------------------- | -------- | --------------------- |
+| [就寝宣言時刻取得](#就寝宣言時刻取得-get-sleep-timeuser_id)          | 就寝宣言時刻を取得する      | GET      | /sleep-time/{user_id} |
+| [就寝宣言時刻登録/更新](#就寝宣言時刻登録更新-put-sleep-timeuser_id) | 就寝宣言時刻を登録/更新する | PUT      | /sleep-time/{user_id} |
+
+### 就寝宣言時刻取得 `GET /sleep-time/{user_id}`
+
+#### パスパラメータ
+
+| パラメータ名 | 型     | 必須 | 説明       |
+| ------------ | ------ | ---- | ---------- |
+| user_id      | string | ✅   | ユーザーID |
+
+#### レスポンスボディ
+
+```json
+{
+  "success": true,
+  "sleep_time": {
+    "user_id": "<user_id>",
+    "time": "23:00:00"
+  }
+}
+```
+
+### 就寝宣言時刻登録/更新 `PUT /sleep-time/{user_id}`
+
+#### パスパラメータ
+
+| パラメータ名 | 型     | 必須 | 説明       |
+| ------------ | ------ | ---- | ---------- |
+| user_id      | string | ✅   | ユーザーID |
+
+#### リクエストボディ
+
+```json
+{
+  "time": "23:00:00"
 }
 ```
 
